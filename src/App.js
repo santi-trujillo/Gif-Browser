@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import './App.css'
+import ListOfGifs from './components/ListOfGifs'
+import { Link, Route, useLocation } from "wouter"
 
-function App() {
+export default function App() {
+  const [keyword, setKeyword] = useState('')
+  const [path, pushLocation] = useLocation()
+  const {setPage} = ListOfGifs({keyword})
+
+  const handleSubmit = evt => {
+    evt.preventDefault()
+    pushLocation(`/search/${keyword}`)
+  }
+
+  const handleChange = evt => {
+    setKeyword(evt.target.value) 
+  }
+
+  const handleNextPage = () => setPage(prevPage => prevPage +1)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <form onSubmit={handleSubmit}>
+        <button>¡Buscar!</button>
+        <input placeholder='Look for your gif...' onChange={handleChange} type='text' value={keyword} />
+      </form>
+      <div className='App'>
+        <section className='App-content'>
+          <h1 className='titleClass'>Gifs</h1>
+          <Route 
+            component={ListOfGifs}
+            path='/search/:keyword'
+          />
+        </section>
+        <button onClick={handleNextPage}>Get next page</button>
+      </div>
+    </>
   );
 }
-
-export default App;
