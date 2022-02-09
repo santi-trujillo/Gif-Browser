@@ -20,3 +20,7 @@ a {
     color: #09f;
     font-size: 35px;
 }
+
+.pagLoading {
+    font-size: 80px;
+}

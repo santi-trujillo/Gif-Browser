@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
 import './App.css'
 import ListOfGifs from './components/ListOfGifs'
-import { Link, Route, useLocation } from "wouter"
+import { Route, useLocation } from "wouter"
 
 export default function App() {
   const [keyword, setKeyword] = useState('')
   const [path, pushLocation] = useLocation()
-  const {setPage} = ListOfGifs({keyword})
 
   const handleSubmit = evt => {
     evt.preventDefault()
@@ -17,10 +16,8 @@ export default function App() {
     setKeyword(evt.target.value) 
   }
 
-  const handleNextPage = () => setPage(prevPage => prevPage +1)
-
   return (
-    <>
+    <div>
       <form onSubmit={handleSubmit}>
         <button>¡Buscar!</button>
         <input placeholder='Look for your gif...' onChange={handleChange} type='text' value={keyword} />
@@ -33,8 +30,7 @@ export default function App() {
             path='/search/:keyword'
           />
         </section>
-        <button onClick={handleNextPage}>Get next page</button>
       </div>
-    </>
+    </div>
   );
 }
