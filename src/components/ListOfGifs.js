@@ -4,21 +4,15 @@ import GetGifs from './GetGifs'
 
 export default function ListOfGifs ({ params }) {
     const { keyword } = params
-    const {loading, setLoading} = useState(false)
-
-    const {gifs, setGifs} = useState([])
+    const [gifs, setGifs] = useState([])
 
 
     useEffect(function () {
-        setLoading(true)
         GetGifs({ keyword })
             .then(gifs => {
                 setGifs(gifs)
-                setLoading(false)
             })
     }, [keyword])
-
-    if (loading) return <p className='pagLoading'>Cargando...</p>
 
     return <div className="gifBox">
         {
