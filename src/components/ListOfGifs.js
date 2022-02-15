@@ -8,7 +8,7 @@ export default function ListOfGifs ({ params }) {
     const { keyword } = params
     const [page, setPage] = useState(INITIAL_PAGE)
     const [gifs, setGifs] = useState([])
-
+    const isFirstpage = page == 0
 
     useEffect(function () {
         GetGifs({ keyword })
@@ -19,8 +19,8 @@ export default function ListOfGifs ({ params }) {
 
     useEffect(function () {
         GetGifs({keyword, page})
-        .then(nextPage => {
-            setGifs(prevGifs => prevGifs.concat(nextPage))
+        .then(pageCounter => {
+            setGifs( pageCounter )
         })
     }, [page])
 
@@ -35,6 +35,7 @@ export default function ListOfGifs ({ params }) {
                 />
             )
         }
-        <button onClick={() => setPage(1)}>Next page</button>
+        <button disabled={isFirstpage} onClick={() => setPage(page - 1)}>Previous page</button>
+        <button onClick={() => setPage(page + 1)}>Next page</button>
     </div>
 }
