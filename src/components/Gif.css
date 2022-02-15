@@ -1,9 +1,8 @@
 .gifBox {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
-    align-items: stretch;
     justify-content: space-around;
+    flex-direction: row;
 }
 
 .gif {
