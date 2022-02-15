@@ -22,5 +22,38 @@ button {
   background: none;
   border: 2px solid;
   font: inherit;
-  margin: 0.5em;
+  padding: 8px 16px;
+  border-radius: 10px;
+  margin-left: 45%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.buttonForm {
+  background: none;
+  border: 2px solid;
+  font: inherit;
+  padding: 8px 16px;
+  border-radius: 10px 0 0 10px;
+  margin: 0%;
+}
+
+.form {
+  background-color: #282c34;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  padding: 10px;
+}
+
+.inputForm {
+  border-radius: 0 10px 10px 0;
+  background: none;
+  border: 2px solid;
+  font: inherit;
+  padding: 4px 16px;
 }
