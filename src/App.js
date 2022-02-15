@@ -6,7 +6,7 @@ import { Route, useLocation } from "wouter"
 export default function App() {
   const [keyword, setKeyword] = useState('')
   const [path, pushLocation] = useLocation()
-
+  
   const handleSubmit = evt => {
     evt.preventDefault()
     pushLocation(`/search/${keyword}`)
@@ -18,9 +18,9 @@ export default function App() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <button>¡Buscar!</button>
-        <input placeholder='Look for your gif...' onChange={handleChange} type='text' value={keyword} />
+      <form onSubmit={handleSubmit} className='form'>
+        <button className='buttonForm'>¡Buscar!</button>
+        <input placeholder='Look for your gif...' onChange={handleChange} type='text' value={keyword} className='inputForm'/>
       </form>
       <div className='App'>
         <section className='App-content'>
