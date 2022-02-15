@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import Gif from './Gif'
 import GetGifs from './GetGifs'
 
-const INITIAL_PAGE = 0
+const INITIAL_PAGE = 1
 
 export default function ListOfGifs ({ params }) {
     const { keyword } = params
